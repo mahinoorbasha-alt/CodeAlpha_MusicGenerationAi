@@ -56,4 +56,4 @@ Flask · TensorFlow / Keras · Music21 · NumPy · HTML5 · CSS3 (glassmorphism)
 - To play `.mid` files, use VLC, GarageBand, or any DAW.
 
 ---
-Built for the **CodeAlpha** internship submission.
+
