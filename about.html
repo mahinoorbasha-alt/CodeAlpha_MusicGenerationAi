@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-head">
+  <h1>About the <span class="grad">Project</span></h1>
+</section>
+
+<div class="card glass">
+  <h3>Overview</h3>
+  <p>
+    <strong>Music Generation with AI</strong> is a full-stack Flask application that
+    teaches a Long Short-Term Memory (LSTM) neural network to compose music by
+    learning sequential patterns from MIDI files. It was built as part of the
+    <strong>CodeAlpha</strong> Machine Learning internship.
+  </p>
+
+  <h3>How it works</h3>
+  <ol>
+    <li><strong>Upload</strong> — MIDI files are stored in the <code>dataset/</code> directory.</li>
+    <li><strong>Preprocess</strong> — Music21 parses each file and extracts notes and chords.</li>
+    <li><strong>Train</strong> — Two stacked LSTM layers (256 units) learn the next-note distribution.</li>
+    <li><strong>Generate</strong> — A random seed sequence is fed back into the model to compose a new track.</li>
+    <li><strong>Download</strong> — The new sequence is written to a `.mid` file with Music21.</li>
+  </ol>
+
+  <h3>Tech Stack</h3>
+  <p>Python · Flask · TensorFlow / Keras · Music21 · NumPy · HTML / CSS / JavaScript</p>
+
+  <h3>Author</h3>
+  <p>Built for the CodeAlpha internship submission.</p>
+</div>
+{% endblock %}

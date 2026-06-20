@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-head">
+  <h1>Train <span class="grad">LSTM Model</span></h1>
+  <p class="lede">Preprocess the dataset, then train the recurrent neural network.</p>
+</section>
+
+<div class="card glass">
+  <h3>Step 1 · Preprocess</h3>
+  <p class="muted">Extract notes and chords from every uploaded MIDI file using Music21.</p>
+  <button id="preprocessBtn" class="btn btn-ghost">Run Preprocessing</button>
+  <div id="preResult" class="result"></div>
+</div>
+
+<div class="card glass">
+  <h3>Step 2 · Train</h3>
+  <div class="row">
+    <label>Epochs <input id="epochs" type="number" value="10" min="1" max="200" /></label>
+    <label>Batch Size <input id="batchSize" type="number" value="64" min="8" max="256" /></label>
+  </div>
+  <button id="trainBtn" class="btn btn-primary">Start Training</button>
+  <div id="trainStatus" class="result"></div>
+  <pre id="trainLog" class="log"></pre>
+</div>
+{% endblock %}
+{% block scripts %}<script>initTrain();</script>{% endblock %}

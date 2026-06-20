@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <span class="pill">Deep Learning · LSTM · Music21</span>
+    <h1>Compose original music with <span class="grad">Artificial Intelligence</span></h1>
+    <p class="lede">
+      Upload MIDI files, train a recurrent neural network, and let the model
+      compose entirely new piano sequences — all from your browser.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ url_for('upload_page') }}">Upload Dataset</a>
+      <a class="btn btn-ghost" href="{{ url_for('generate_page') }}">Generate Music</a>
+    </div>
+  </div>
+  <div class="hero-visual glass">
+    <div class="equalizer">
+      {% for i in range(24) %}<span style="--i:{{ i }}"></span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="dashboard">
+  <h2>Dashboard</h2>
+  <div class="stat-grid">
+    <div class="stat glass"><div class="stat-num">{{ stats.uploaded }}</div><div class="stat-label">MIDI Files Uploaded</div></div>
+    <div class="stat glass"><div class="stat-num">{{ stats.notes }}</div><div class="stat-label">Notes Extracted</div></div>
+    <div class="stat glass"><div class="stat-num">{{ 'Ready' if stats.model_ready else 'Not Trained' }}</div><div class="stat-label">Model Status</div></div>
+    <div class="stat glass"><div class="stat-num">{{ stats.generated }}</div><div class="stat-label">Songs Generated</div></div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature glass"><h3>1. Upload</h3><p>Drop your MIDI dataset — the more varied, the richer the output.</p></div>
+  <div class="feature glass"><h3>2. Train</h3><p>An LSTM learns sequential patterns of notes and chords.</p></div>
+  <div class="feature glass"><h3>3. Generate</h3><p>Sample fresh sequences and download them as `.mid` files.</p></div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-head">
+  <h1>Upload <span class="grad">MIDI Dataset</span></h1>
+  <p class="lede">Drop one or more `.mid` files. They'll be stored in the <code>dataset/</code> folder.</p>
+</section>
+
+<div class="card glass">
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label class="dropzone" id="dropzone">
+      <input id="fileInput" type="file" name="files" accept=".mid,.midi" multiple hidden />
+      <div class="dz-inner">
+        <div class="dz-icon">⬆</div>
+        <div><strong>Click to choose</strong> or drag MIDI files here</div>
+        <small>Accepted: .mid, .midi · Max 64 MB total</small>
+      </div>
+    </label>
+    <button type="submit" class="btn btn-primary">Upload Files</button>
+  </form>
+  <div id="uploadResult" class="result"></div>
+</div>
+
+<div class="card glass">
+  <h3>Currently in dataset ({{ files|length }})</h3>
+  {% if files %}
+    <ul class="file-list">{% for f in files %}<li>♪ {{ f }}</li>{% endfor %}</ul>
+  {% else %}
+    <p class="muted">No files uploaded yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
+{% block scripts %}<script>initUpload();</script>{% endblock %}

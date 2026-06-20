@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-head">
+  <h1>Generate <span class="grad">New Music</span></h1>
+  <p class="lede">Sample a fresh sequence from the trained model and download the MIDI.</p>
+</section>
+
+<div class="card glass">
+  <div class="row">
+    <label>Sequence Length <input id="genLength" type="number" value="200" min="50" max="1000" /></label>
+  </div>
+  <button id="genBtn" class="btn btn-primary">Generate Music</button>
+  <div id="genResult" class="result"></div>
+</div>
+
+<div class="card glass">
+  <h3>Generated Tracks ({{ files|length }})</h3>
+  {% if files %}
+    <ul class="file-list">
+      {% for f in files %}
+        <li>
+          ♪ {{ f }}
+          <a class="btn btn-ghost btn-sm" href="{{ url_for('download_generated', filename=f) }}">Download</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="muted">No generated tracks yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
+{% block scripts %}<script>initGenerate();</script>{% endblock %}
